@@ -1,142 +1,105 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sachin Panel (Hackii) – VIP RNG</title>
-  <style>
-    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
-    body{background:#07132a;display:flex;justify-content:center;align-items:center;min-height:100vh;color:#fff}.wrapper{width:380px}
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sachin Panel – VIP RNG</title>
 
-/* Common Glass Card */
-.card{
-  width:100%;
-  border-radius:18px;
-  background:linear-gradient(145deg,#0c1b46,#081331);
-  box-shadow:0 0 35px rgba(0,0,0,.6), inset 0 0 20px rgba(255,255,255,.05);
-  padding:20px 18px;
-  margin-top:10px;
-}
-
-.header{text-align:center;border-bottom:1px solid rgba(255,255,255,.2);padding-bottom:12px}
-.title{font-size:24px;font-weight:800}
-.sub{font-size:13px;color:#c6e7ff;margin-top:4px}
-
-/* INPUT */
-.input{
-  width:100%;
-  padding:12px;
-  border-radius:12px;
-  border:none;
-  outline:none;
-  font-size:15px;
-  margin-top:16px;
-  background:#fff;
-  color:#000;
-}
-
-.btn{
-  width:100%;
-  margin-top:14px;
-  padding:11px;
-  border-radius:12px;
-  border:none;
-  background:linear-gradient(135deg,#006dff,#00ffe5);
-  color:#001b2f;
-  font-weight:800;
-  font-size:16px;
-  cursor:pointer;
-}
-
-.links{margin-top:10px;text-align:center;font-size:13px;color:#baf9ff}
-.links a{color:#4dffea;text-decoration:none;font-weight:700}
-
-/* PANEL PAGE */
-.row{display:flex;justify-content:space-between;margin-top:8px}
-.label{color:#cde0ff;font-size:14px}
-.value{font-size:16px;font-weight:800;background:linear-gradient(90deg,#44ffd1,#98ff6a);-webkit-background-clip:text;color:transparent}
-
-.rngBox{margin-top:18px;height:110px;border-radius:18px;border:2px solid rgba(255,255,255,.2);background:linear-gradient(135deg,#21005d,#4a0091,#6e00c9);display:flex;justify-content:center;align-items:center;box-shadow:0 0 20px rgba(170,0,255,.45)}
-.rngNumber{font-size:62px;font-weight:900;background:linear-gradient(90deg,#0dfff7,#5fff93,#baff5b);-webkit-background-clip:text;color:transparent}
-
-.timerBox{margin-top:16px;padding:10px;border-radius:12px;background:linear-gradient(135deg,#002842,#00385e,#004b7f);border:1px solid rgba(255,255,255,.25);text-align:center}
-.timerText{font-size:14px;color:#d5efff}
-.timeValue{margin-top:4px;font-size:28px;font-weight:900;background:linear-gradient(90deg,#00f7ff,#00ffa2,#8dff6b);-webkit-background-clip:text;color:transparent}
-
-.clock{text-align:center;margin-top:10px;font-size:14px;color:#8dfffa}
-
-.footer{text-align:center;margin-top:14px;font-size:12px;color:#a8c6ff}
-
-  </style>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
+body{background:#061226;color:white;display:flex;justify-content:center;align-items:center;min-height:100vh;}
+.card{width:380px;background:linear-gradient(135deg,#142d62,#0c1b3c);padding:20px;border-radius:18px;box-shadow:0 0 25px rgba(0,0,0,.6);text-align:center;}
+.title{font-size:24px;font-weight:800;}
+.sub{color:#b9d8ff;font-size:14px;margin-top:4px;}
+.input{width:100%;padding:12px;border-radius:10px;border:none;margin-top:18px;font-size:16px;}
+.btn{width:100%;padding:12px;margin-top:12px;border:none;border-radius:10px;background:linear-gradient(135deg,#00ffe0,#00ff6a);color:#002437;font-weight:900;font-size:17px;cursor:pointer;}
+.linkBtn{width:100%;padding:12px;margin-top:10px;background:linear-gradient(135deg,#007bff,#00e1ff);border:none;color:white;font-weight:700;border-radius:10px;font-size:16px;display:block;text-decoration:none;}
+.panelBox{margin-top:20px;padding:15px;border-radius:14px;background:linear-gradient(135deg,#0d234d,#133b70);display:none;}
+.rng{font-size:64px;font-weight:900;margin-top:10px;background:linear-gradient(90deg,#00ffd1,#6dff73);-webkit-background-clip:text;color:transparent;}
+.timer{font-size:26px;margin-top:6px;color:#7dffb0;}
+.error{color:#ff6b6b;margin-top:10px;font-size:14px;display:none;}
+.footer{margin-top:10px;color:#8fb9ff;font-size:12px;}
+</style>
 </head>
+
 <body>
-<div class="wrapper">  <!-- LOGIN CARD -->  <div id="loginPage" class="card">
-    <div class="header">
-      <div class="title">Sachin Panel</div>
-      <div class="sub">VIP RNG – Premium Random System</div>
-    </div><input id="uidInput" class="input" placeholder="Enter UID" />
-<button class="btn" onclick="login()">Login</button>
 
-<div class="links">
-  Register Link (Game): <a href="https://www.jalwagame8.com/#/register?invitationCode=353868590468" target="_blank">Click Here</a><br>
-  Telegram Profile: <a href="https://t.me/NUMBER_SURE_BET" target="_blank">Open</a>
+<div class="card">
+
+ <div class="title">Sachin Panel</div>
+ <div class="sub">VIP RNG – Premium Random System</div>
+
+ <input id="uidInput" class="input" placeholder="Enter UID">
+ <button onclick="login()" class="btn">Login</button>
+
+ <div id="error" class="error">❌ Invalid UID! Access Denied</div>
+
+ <a href="https://www.jalwagame8.com/#/register?invitationCode=353868590468" class="linkBtn">
+ Register Link (Game)
+ </a>
+
+ <a href="https://t.me/NUMBER_SURE_BET" class="linkBtn">
+ Telegram Profile
+ </a>
+
+ <div id="panel" class="panelBox">
+   <h2>Status: Active</h2>
+   <h3>Round Duration: 1 Minute</h3>
+
+   <div class="rng" id="rng">0</div>
+   <div class="timer" id="timer">60s</div>
+ </div>
+
+ <div class="footer">Developed by Sachin Panel (Hackii)</div>
 </div>
 
-  </div>  <!-- PANEL CARD -->  <div id="panelPage" class="card" style="display:none"><div class="header">
-  <div class="title">Sachin Panel</div>
-  <div class="sub">VIP RNG – Premium Random System</div>
-</div>
+<script>
 
-<div class="row"><span class="label">Status</span><span class="value">Active</span></div>
-<div class="row"><span class="label">Round Duration</span><span class="value">1 Minute</span></div>
+let allowedUIDs = [];
 
-<div class="rngBox"><div id="rng" class="rngNumber">0</div></div>
+// Load UID from file
+fetch("uids.json")
+.then(res => res.json())
+.then(data => allowedUIDs = data.allowedUIDs);
 
-<div class="timerBox">
-  <div class="timerText">Next Result Coming...</div>
-  <div id="timer" class="timeValue">60s</div>
-</div>
+function login(){
+ let uid = document.getElementById("uidInput").value.trim();
+ let error = document.getElementById("error");
+ let panel = document.getElementById("panel");
 
-<div class="clock" id="liveClock">--:--:--</div>
+ if(allowedUIDs.includes(uid)){
+   error.style.display="none";
+   panel.style.display="block";
+   startSystem();
+ } else {
+   error.style.display="block";
+ }
+}
 
-<div class="footer">Developed by Sachin Panel (Hackii)</div>
+// RNG SYSTEM
+let timeLeft = 60;
+function startSystem(){
+ setInterval(()=>{
+  timeLeft--;
 
-  </div>
-</div><script>
-// simple static uid allow list (edit uids in uids.json if using fetch, but fallback here allowed all non-empty)
-async function login(){
-  const uid=document.getElementById('uidInput').value.trim();
-  if(!uid){alert('Please enter UID');return;}
-
-  try{
-    const res=await fetch('uids.json');
-    const list=await res.json();
-    if(Array.isArray(list) && !list.includes(uid)){
-      alert('UID Not Found / Not Activated');
-      return;
-    }
-  }catch(e){
-    // if file not found then allow any uid simply
+  if(timeLeft === 20){
+    generateRNG();
   }
 
-  document.getElementById('loginPage').style.display='none';
-  document.getElementById('panelPage').style.display='block';
-}
+  if(timeLeft <= 0){
+    timeLeft = 60;
+  }
 
-// RNG & Timer
-let timeLeft=60;
-setInterval(()=>{
-  timeLeft--; if(timeLeft<=0){timeLeft=60;generateRNG();}
-  document.getElementById('timer').innerText=timeLeft+'s';
-},1000);
+  document.getElementById("timer").innerText = timeLeft+"s";
+ },1000);
+}
 
 function generateRNG(){
-  document.getElementById('rng').innerText=Math.floor(Math.random()*10);
+ let num = Math.floor(Math.random()*10);
+ document.getElementById("rng").innerText = num;
 }
 
-// Live Clock
-setInterval(()=>{
-  const d=new Date();
-  document.getElementById('liveClock').innerText=d.toLocaleTimeString();
-},1000);
-</script></body>
-                                                                                </html>
+</script>
+
+</body>
+</html>
