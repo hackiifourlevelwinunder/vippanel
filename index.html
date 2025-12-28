@@ -2,122 +2,230 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sachin Panel – VIP RNG</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif;}
-body{background:#061226;color:white;display:flex;justify-content:center;align-items:center;min-height:100vh;}
-.card{width:380px;background:linear-gradient(135deg,#142d62,#0c1b3c);padding:20px;border-radius:18px;box-shadow:0 0 25px rgba(0,0,0,.6);text-align:center;}
-.title{font-size:24px;font-weight:800;}
-.sub{color:#b9d8ff;font-size:14px;margin-top:4px;}
-.input{width:100%;padding:12px;border-radius:10px;border:none;margin-top:18px;font-size:16px;}
-.btn{width:100%;padding:12px;margin-top:12px;border:none;border-radius:10px;background:linear-gradient(135deg,#00ffe0,#00ff6a);color:#002437;font-weight:900;font-size:17px;cursor:pointer;}
-.linkBtn{width:100%;padding:12px;margin-top:10px;background:linear-gradient(135deg,#007bff,#00e1ff);border:none;color:white;font-weight:700;border-radius:10px;font-size:16px;display:block;text-decoration:none;}
-.panelBox{margin-top:20px;padding:15px;border-radius:14px;background:linear-gradient(135deg,#0d234d,#133b70);display:none;}
-.rng{font-size:64px;font-weight:900;margin-top:10px;background:linear-gradient(90deg,#00ffd1,#6dff73);-webkit-background-clip:text;color:transparent;}
-.timer{font-size:30px;margin-top:6px;color:#7dffb0;}
-.clock{font-size:22px;margin-top:6px;color:#ffd36b;}
-.error{color:#ff6b6b;margin-top:10px;font-size:14px;display:none;}
-.footer{margin-top:10px;color:#8fb9ff;font-size:12px;}
+body{
+  margin:0;
+  background:#050c1c;
+  font-family: Arial;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  color:white;
+}
+.app{
+  width:380px;
+  background:linear-gradient(135deg,#081a3f,#0b204d,#09163a);
+  padding:18px;
+  border-radius:18px;
+  box-shadow:0 0 25px rgba(0,0,0,.6);
+}
+
+.header{text-align:center;}
+.title{font-size:22px;font-weight:900;}
+.sub{font-size:13px;color:#c8daff;margin-top:3px;}
+
+.inputBox{
+  margin-top:18px;
+  padding:12px;
+  border-radius:14px;
+  background:#0a1c34;
+}
+.inputBox input{
+  width:100%;
+  padding:9px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+  font-size:15px;
+}
+.loginBtn{
+  width:100%;
+  margin-top:10px;
+  padding:10px;
+  border-radius:10px;
+  border:none;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+  background:linear-gradient(135deg,#00ffd1,#00aaff,#0055ff);
+}
+
+#error{
+  color:#ff6b6b;
+  margin-top:6px;
+  font-size:13px;
+  display:none;
+}
+
+.links{
+  margin-top:14px;
+}
+.links button{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:none;
+  margin-top:8px;
+  font-size:16px;
+  font-weight:800;
+  cursor:pointer;
+}
+.reg{
+  background:#ffb100;
+}
+.tg{
+  background:#27a4ff;
+}
+
+.panel{display:none;margin-top:16px;}
+
+.box{
+  margin-top:12px;
+  padding:12px;
+  border-radius:16px;
+  background:#092b4f;
+}
+
+.rng{
+  font-size:65px;
+  font-weight:900;
+  text-align:center;
+  background:linear-gradient(90deg,#00ffd1,#7aff78);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.timeText{text-align:center;margin-top:5px;}
+.timeVal{
+  font-size:28px;
+  text-align:center;
+  font-weight:900;
+  background:linear-gradient(90deg,#00ffd1,#7aff78);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.footer{
+  text-align:center;
+  margin-top:12px;
+  font-size:12px;
+  color:#a5c7ff;
+}
+
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<div class="app">
 
- <div class="title">Sachin Panel</div>
- <div class="sub">VIP RNG – Premium Random System</div>
+<div class="header">
+<div class="title">Sachin Panel</div>
+<div class="sub">VIP RNG Premium System</div>
+</div>
 
- <input id="uidInput" class="input" placeholder="Enter UID">
- <button onclick="login()" class="btn">Login</button>
+<div class="inputBox">
+<input id="uidInput" placeholder="Enter UID">
+<button class="loginBtn" onclick="login()">LOGIN</button>
+<div id="error">❌ Wrong UID</div>
+</div>
 
- <div id="error" class="error">❌ Invalid UID! Access Denied</div>
+<div class="links">
+<button class="reg" onclick="window.location.href='https://www.jalwagame8.com/#/register?invitationCode=353868590468'">
+REGISTER GAME
+</button>
 
- <a href="https://www.jalwagame8.com/#/register?invitationCode=353868590468" class="linkBtn">
- Register Link (Game)
- </a>
+<button class="tg" onclick="window.location.href='https://t.me/NUMBER_SURE_BET'">
+TELEGRAM PANEL
+</button>
+</div>
 
- <a href="https://t.me/NUMBER_SURE_BET" class="linkBtn">
- Telegram Profile
- </a>
 
- <div id="panel" class="panelBox">
-   <h2>Status: Active</h2>
-   <h3>Round Duration: 1 Minute</h3>
+<div id="panel" class="panel">
 
-   <div class="clock" id="wallClock">00:00:00</div>
+<div class="box">
+Wall Clock
+<div id="wallClock" class="timeVal">00:00:00</div>
+</div>
 
-   <div class="rng" id="rng">0</div>
-   <div class="timer" id="timer">60s</div>
+<div class="box">
+Round Countdown
+<div id="timer" class="timeVal">60s</div>
+</div>
 
-   <h3 style="color:#55ff99">Result Reveal at: 00:20</h3>
- </div>
+<div class="box">
+Current Result
+<div id="rng" class="rng">0</div>
+<div class="timeText">(40 sec pehle result lock)</div>
+</div>
 
- <div class="footer">Developed by Sachin Panel (Hackii)</div>
+</div>
+
+<div class="footer">Developed by Sachin Panel (Hackii)</div>
+
 </div>
 
 <script>
 
+// ===== UID SYSTEM =====
 let allowedUIDs = [];
-
-// Load UID from file
-fetch("uids.json")
-.then(res => res.json())
-.then(data => allowedUIDs = data.allowedUIDs);
+fetch("uids.json").then(r=>r.json()).then(d=> allowedUIDs = d.allowedUIDs);
 
 function login(){
  let uid = document.getElementById("uidInput").value.trim();
- let error = document.getElementById("error");
- let panel = document.getElementById("panel");
 
  if(allowedUIDs.includes(uid)){
-   error.style.display="none";
-   panel.style.display="block";
+   document.getElementById("error").style.display="none";
+   document.getElementById("panel").style.display="block";
    startSystem();
  } else {
-   error.style.display="block";
+   document.getElementById("error").style.display="block";
  }
 }
 
-// WALL CLOCK
+
+// ===== WALL CLOCK =====
 setInterval(()=>{
- let now = new Date();
- document.getElementById("wallClock").innerText =
- now.toLocaleTimeString();
+ let t = new Date();
+ document.getElementById("wallClock").innerText = t.toLocaleTimeString();
 },1000);
 
 
-// RNG SYSTEM
-let timeLeft = 60;
-let resultLocked = false;
+// ===== RNG SYSTEM =====
+let locked = false;
 
 function startSystem(){
 
  setInterval(()=>{
 
-  timeLeft--;
+   let now = new Date();
+   let sec = now.getSeconds();
 
-  // 00:20 pe final result lock
-  if(timeLeft === 20 && !resultLocked){
-    let num = Math.floor(Math.random()*10);
-    document.getElementById("rng").innerText = num;
-    resultLocked = true;
-  }
+   let left = 60 - sec;
+   if(left === 60) left = 0;
 
-  // reset system every minute
-  if(timeLeft <= 0){
-    timeLeft = 60;
-    resultLocked = false;
-  }
+   document.getElementById("timer").innerText = left + "s";
 
-  document.getElementById("timer").innerText = timeLeft+"s";
+   // 40 sec pehle lock => jab 20s bache
+   if(left === 20 && !locked){
+     let num = Math.floor(Math.random()*10);
+     document.getElementById("rng").innerText = num;
+     locked = true;
+   }
+
+   // new minute reset
+   if(left === 59){
+     locked = false;
+   }
 
  },1000);
+
 }
 
 </script>
 
 </body>
-</html>
+ </html>
