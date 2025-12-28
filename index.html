@@ -16,7 +16,8 @@ body{background:#061226;color:white;display:flex;justify-content:center;align-it
 .linkBtn{width:100%;padding:12px;margin-top:10px;background:linear-gradient(135deg,#007bff,#00e1ff);border:none;color:white;font-weight:700;border-radius:10px;font-size:16px;display:block;text-decoration:none;}
 .panelBox{margin-top:20px;padding:15px;border-radius:14px;background:linear-gradient(135deg,#0d234d,#133b70);display:none;}
 .rng{font-size:64px;font-weight:900;margin-top:10px;background:linear-gradient(90deg,#00ffd1,#6dff73);-webkit-background-clip:text;color:transparent;}
-.timer{font-size:26px;margin-top:6px;color:#7dffb0;}
+.timer{font-size:30px;margin-top:6px;color:#7dffb0;}
+.clock{font-size:22px;margin-top:6px;color:#ffd36b;}
 .error{color:#ff6b6b;margin-top:10px;font-size:14px;display:none;}
 .footer{margin-top:10px;color:#8fb9ff;font-size:12px;}
 </style>
@@ -46,8 +47,12 @@ body{background:#061226;color:white;display:flex;justify-content:center;align-it
    <h2>Status: Active</h2>
    <h3>Round Duration: 1 Minute</h3>
 
+   <div class="clock" id="wallClock">00:00:00</div>
+
    <div class="rng" id="rng">0</div>
    <div class="timer" id="timer">60s</div>
+
+   <h3 style="color:#55ff99">Result Reveal at: 00:20</h3>
  </div>
 
  <div class="footer">Developed by Sachin Panel (Hackii)</div>
@@ -76,27 +81,40 @@ function login(){
  }
 }
 
+// WALL CLOCK
+setInterval(()=>{
+ let now = new Date();
+ document.getElementById("wallClock").innerText =
+ now.toLocaleTimeString();
+},1000);
+
+
 // RNG SYSTEM
 let timeLeft = 60;
+let resultLocked = false;
+
 function startSystem(){
+
  setInterval(()=>{
+
   timeLeft--;
 
-  if(timeLeft === 20){
-    generateRNG();
+  // 00:20 pe final result lock
+  if(timeLeft === 20 && !resultLocked){
+    let num = Math.floor(Math.random()*10);
+    document.getElementById("rng").innerText = num;
+    resultLocked = true;
   }
 
+  // reset system every minute
   if(timeLeft <= 0){
     timeLeft = 60;
+    resultLocked = false;
   }
 
   document.getElementById("timer").innerText = timeLeft+"s";
- },1000);
-}
 
-function generateRNG(){
- let num = Math.floor(Math.random()*10);
- document.getElementById("rng").innerText = num;
+ },1000);
 }
 
 </script>
