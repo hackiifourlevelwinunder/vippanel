@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sachin Panel (Hackii) – VIP RNG</title>
+<style>
+  * {margin:0;padding:0;box-sizing:border-box;font-family:Arial, Helvetica, sans-serif;}
+  body {background:#050a1b;display:flex;justify-content:center;align-items:center;min-height:100vh;color:#fff;}
+
+  .app {width:380px;background:linear-gradient(135deg,#111c3a,#182b5a,#0d3350);padding:18px;border-radius:16px;box-shadow:0 0 28px rgba(0,0,0,0.6), inset 0 0 18px rgba(255,255,255,0.05);}  
+  .header{text-align:center;padding:10px 0 14px;border-bottom:1px solid rgba(255,255,255,0.15);}  
+  .title{font-size:22px;font-weight:700;letter-spacing:1px;}  
+  .subtitle{font-size:13px;color:#b5c7ff;margin-top:4px;}
+
+  .loginBox{margin-top:20px;text-align:center;}  
+  .loginBox input{width:100%;padding:10px;border-radius:10px;border:none;font-size:15px;outline:none;margin-top:10px;}  
+  .loginBtn{margin-top:12px;width:100%;padding:10px;font-size:15px;border-radius:10px;background:linear-gradient(135deg,#00ffe7,#00c8ff,#0084ff);border:none;color:#001b2f;font-weight:800;cursor:pointer;}
+
+  .links{margin-top:14px;text-align:center;color:#9fb5ff;font-size:13px;}  
+  .links a{color:#8dffea;text-decoration:none;}
+
+  .panel{display:none;}
+
+  .card{margin-top:16px;padding:14px;border-radius:14px;background: linear-gradient(135deg, #172850,#10294e);}  
+  .row{display:flex;justify-content:space-between;align-items:center;margin-top:6px;}  
+  .label{font-size:14px;color:#d0dcff;}  
+  .value{font-size:16px;font-weight:700;background: linear-gradient(90deg,#20ffb4,#7dff9a);-webkit-background-clip:text;color:transparent;letter-spacing:1px;}
+
+  .rngBox{margin-top:18px;display:flex;justify-content:center;align-items:center;background: linear-gradient(135deg,#190045,#3a0073,#6b00c9);height:110px;border-radius:18px;border:2px solid rgba(255,255,255,0.2);}  
+  .rngNumber{font-size:64px;font-weight:900;background:linear-gradient(90deg,#00ffd1,#61ff9f,#b3ff66);-webkit-background-clip:text;color:transparent;}
+
+  .timerBox{margin-top:16px;padding:10px;border-radius:12px;background:linear-gradient(135deg,#001f36,#01345d);text-align:center;}  
+  .timeValue{margin-top:4px;font-size:26px;font-weight:800;background:linear-gradient(90deg,#00f7ff,#00ffa2,#8dff6b);-webkit-background-clip:text;color:transparent;}
+
+  .footer{margin-top:18px;text-align:center;font-size:12px;color:#9fb5ff;}
+</style>
+</head>
+<body>
+<div class="app">
+
+<div class="header">
+  <div class="title">Sachin Panel</div>
+  <div class="subtitle">VIP RNG – Premium Random System</div>
+</div>
+
+<div id="loginBox" class="loginBox">
+  <input id="uidInput" placeholder="Enter UID" />
+  <button class="loginBtn" onclick="login()">Login</button>
+
+  <div class="links">
+    Register Link (Game): 
+    <a href="https://www.jalwagame8.com/#/register?invitationCode=353868590468" target="_blank">Click Here</a><br>
+    Telegram Profile: 
+    <a href="https://t.me/NUMBER_SURE_BET" target="_blank">Open</a>
+  </div>
+</div>
+
+<div id="panel" class="panel">
+  <div class="card">
+    <div class="row"><span class="label">Status</span><span class="value">Active</span></div>
+    <div class="row"><span class="label">Round Duration</span><span class="value">1 Minute</span></div>
+  </div>
+
+  <div class="rngBox">
+    <div id="rng" class="rngNumber">0</div>
+  </div>
+
+  <div class="timerBox">
+    <div class="timerText" id="revealStatus">Next Result Coming...</div>
+    <div id="timer" class="timeValue">60s</div>
+  </div>
+
+  <div class="footer">Developed by Sachin Panel (Hackii)</div>
+</div>
+</div>
+
+<script>
+let APPROVED_UIDS = [];
+
+async function loadUIDs(){
+  try{
+    const res = await fetch('./uids.json');
+    const data = await res.json();
+    APPROVED_UIDS = data.uids || [];
+  }catch{
+    alert('UID File Missing!');
+  }
+}
+loadUIDs();
+
+function login(){
+  const uid = document.getElementById('uidInput').value.trim();
+  if(!uid){alert('Enter UID');return;}
+  if(!APPROVED_UIDS.includes(uid)){
+    alert('UID Not Approved');
+    return;
+  }
+  document.getElementById('loginBox').style.display='none';
+  document.getElementById('panel').style.display='block';
+}
+
+let timeLeft = 60;
+setInterval(()=>{
+  timeLeft--;
+
+  if(timeLeft === 20){
+    document.getElementById('revealStatus').innerText = 'Result Revealed';
+    generateRNG();
+  }
+
+  if(timeLeft <= 0){
+    timeLeft = 60;
+    document.getElementById('revealStatus').innerText = 'Next Round Running...';
+  }
+
+  document.getElementById('timer').innerText = timeLeft + 's';
+},1000);
+
+function generateRNG(){
+  let num = Math.floor(Math.random()*10);
+  document.getElementById('rng').innerText = num;
+}
+</script>
+</body>
+</html>￼Enter
